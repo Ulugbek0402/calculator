@@ -1,3 +1,8 @@
+import csv
+from file_manager import read_csv, write_csv
+from operation import add, subtract, multiply, divide
+
+
 def main():
     while True:
         print("""
@@ -21,17 +26,29 @@ def main():
                 continue
 
             if choice == '1':
-                pass
+                result = add(a, b)
             elif choice == '2':
-                pass
+                result = subtract(a, b)
             elif choice == '3':
-                pass
+                result = multiply(a, b)
             elif choice == '4':
-                pass
+                result = divide(a, b)
+
+            print(f"Result: {result}")
+
+
+            result_data = [a, b, result]
+            write_csv('data.csv', result_data)
 
         elif choice == '5':
-            print("\nCalculation History:")
-            pass
+
+            history = read_csv('data.csv')
+            if history:
+                print("\nCalculation History:")
+                for row in history:
+                    print(f"Operands: {row[0]} and {row[1]}, Result: {row[2]}")
+            else:
+                print("No calculations performed yet.")
 
         elif choice == '6':
             print("Goodbye!")
