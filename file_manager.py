@@ -1,5 +1,6 @@
 import csv
 
+
 def read_csv(file_path):
     try:
         with open(file_path, mode='r', newline='', encoding='utf-8') as file:
@@ -7,6 +8,7 @@ def read_csv(file_path):
             return list(reader)
     except FileNotFoundError:
         return []
+
 
 def write_csv(file_path, data):
     with open(file_path, mode='w', newline='', encoding='utf-8') as file:
